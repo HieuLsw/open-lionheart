@@ -27,10 +27,7 @@ class table(cocos.layer.Layer):
           self.rows = rows
           self.columns = columns
           
-          self.active_cells = [] #This shouldn't go here
-          #self.selectedi = -1 #-1 indicates none cell selected
-          #self.selectedj = -1
-          self.selected = None
+          self.selected = None #a la vista?
           i=0
           j=0
           #matrix with all the cells of the table.
@@ -72,6 +69,7 @@ class table(cocos.layer.Layer):
                     if cell.inrange(x,y):
                          return cell
 
+      
      def get(self,j):
           return round(self.cell_size/2)+1+self.cell_size*j
 
@@ -190,7 +188,8 @@ class cell(cocos.sprite.Sprite):
           self.j=j
           self.movements=0
           self.activated = False
-     #Funciones
+          
+     #Functions
      
      #Return true if the cell is in the x and y coordinates
      def inrange(self,x,y):
