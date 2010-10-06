@@ -69,7 +69,7 @@ class table(cocos.layer.Layer):
                     if cell.inrange(x,y):
                          return cell
 
-      
+     #Returns the central coordinate of a row or column 
      def get(self,j):
           return round(self.cell_size/2)+1+self.cell_size*j
 

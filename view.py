@@ -220,7 +220,6 @@ class gameView(cocos.layer.Layer):
           self.dices.element.text = text
 
      def flee_unit(self,unit,distance):
-          print "panic! ", distance
           if unit.orientation == 1:
                unit.setOrientation(3)
                if self.controller.tablero.cell_at(unit.i-1, unit.j).orientation == 0:
@@ -241,14 +240,14 @@ class gameView(cocos.layer.Layer):
                if self.controller.tablero.cell_at(unit.i, unit.j+1).orientation == 0:
                   self.controller.tablero.swap_cells(unit,self.controller.tablero.cell_at(unit.i, unit.j+1))
                return
-          pass
+          return
 
      def attack_action(self,attacker,defender):
           roll= self.dice_roll(attacker.soldiers * attacker.dicePerSoldier)
           self.print_dices(roll)
           hits = attacker.attack_result(roll)
           #Fisrt we check if the unit flees or the enemy has to flee (mercenaary fear)
-          if hits[0] >=0:
+          if hits[0] == 1:
               self.flee_unit(attacker,hits[1]) 
               return
           else:     
